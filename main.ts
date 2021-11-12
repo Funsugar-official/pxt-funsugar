@@ -1,5 +1,5 @@
 
-//% weight=10 color=#31C7D5 icon="\uf1b0" block="乐糖"
+//% weight=10 color=#31C7D5 icon="\uf1b0" block="funsugar"
 
 namespace Funsugar {
     export enum Motors {
@@ -58,6 +58,24 @@ namespace Funsugar {
         }
         distanceBuf = d;
         return Math.floor(ret * 10 / 6 / 58);
+    }
+	
+    /**
+     * serial write
+     */
+    //% block="时间 %time|ID %index |角度 %angle"
+    export function LeArm(time: number, index: number, angle: number): void {
+        let buf = pins.createBuffer(9);
+        buf[0] = 0x55;
+        buf[1] = 0x55;
+        buf[2] = 0x08;
+        buf[3] = 0x03;
+        buf[4] = time;
+        buf[5] = time>>8;
+        buf[6] = index;
+        buf[7] = angle;
+	buf[8] = angle>>8;    
+        serial.writeBuffer(buf)
     }
 
 

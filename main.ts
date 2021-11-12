@@ -63,7 +63,7 @@ namespace Funsugar {
     /**
      * serial write
      */
-    //% block="机械臂舵机设置 时间 %time|ID %index |角度 %angle"
+    //% block="机械臂舵机设置|时间 %time|ID %index |角度 %angle"
     export function LeArm(time: number, index: number, angle: number): void {
         let buf = pins.createBuffer(9);
         buf[0] = 0x55;
